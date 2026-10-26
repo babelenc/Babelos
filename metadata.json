@@ -1,0 +1,6 @@
+{
+  "name": "BabelOS",
+  "description": "Personal Life Operating System — daily planning, study tracking, personal finance, goal management, progress analytics, and AI assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

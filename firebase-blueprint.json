@@ -1,0 +1,220 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile settings and schedule preferences for BabelOS",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "preferredLanguage": { "type": "string" },
+        "preferredTheme": { "type": "string" },
+        "currency": { "type": "string" },
+        "timezone": { "type": "string" },
+        "wakeTime": { "type": "string" },
+        "sleepTime": { "type": "string" },
+        "workSchedule": { "type": "string" },
+        "studyTime": { "type": "string" },
+        "breakTimes": { "type": "string" },
+        "weeklyRestDay": { "type": "string" },
+        "onboardingCompleted": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["displayName", "preferredLanguage", "currency", "timezone", "onboardingCompleted", "createdAt"]
+    },
+    "TaskItem": {
+      "title": "TaskItem",
+      "description": "Daily planner task item with scheduling and priority",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "priority": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "startTime": { "type": "string" },
+        "endTime": { "type": "string" },
+        "estimatedDuration": { "type": "string" },
+        "isCompleted": { "type": "boolean" },
+        "recurrence": { "type": "string" },
+        "relatedGoalId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "priority", "isCompleted", "createdAt"]
+    },
+    "StudySubject": {
+      "title": "StudySubject",
+      "description": "Study tracker subject area",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "targetDate": { "type": "string" },
+        "weeklyStudyTargetMinutes": { "type": "integer" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "isActive", "createdAt"]
+    },
+    "StudyTopic": {
+      "title": "StudyTopic",
+      "description": "Specific topic within a study subject",
+      "type": "object",
+      "properties": {
+        "subjectId": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "priority": { "type": "string" },
+        "estimatedMinutes": { "type": "integer" },
+        "actualMinutes": { "type": "integer" },
+        "notes": { "type": "string" },
+        "revisionDate": { "type": "string" },
+        "quizScore": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["subjectId", "name", "status", "priority", "createdAt"]
+    },
+    "StudySession": {
+      "title": "StudySession",
+      "description": "Recorded study session or focus timer session",
+      "type": "object",
+      "properties": {
+        "subjectId": { "type": "string" },
+        "topicId": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "topicName": { "type": "string" },
+        "date": { "type": "string" },
+        "durationMinutes": { "type": "integer" },
+        "studyMethod": { "type": "string" },
+        "notes": { "type": "string" },
+        "score": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["subjectId", "date", "durationMinutes", "createdAt"]
+    },
+    "FinancialAccount": {
+      "title": "FinancialAccount",
+      "description": "Tracked financial account (Cash, Bank account, etc.)",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "accountType": { "type": "string" },
+        "openingBalance": { "type": "number" },
+        "currentBalance": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "accountType", "openingBalance", "currentBalance", "createdAt"]
+    },
+    "FinancialTransaction": {
+      "title": "FinancialTransaction",
+      "description": "Income, expense, or transfer financial transaction",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "amount": { "type": "number" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "accountId": { "type": "string" },
+        "toAccountId": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "description": { "type": "string" },
+        "tags": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["type", "amount", "category", "date", "createdAt"]
+    },
+    "FinancialBudget": {
+      "title": "FinancialBudget",
+      "description": "Monthly budget targets and category spending limits",
+      "type": "object",
+      "properties": {
+        "monthlyExpenseBudget": { "type": "number" },
+        "monthlySavingsTarget": { "type": "number" },
+        "categoryBudgets": { "type": "string" },
+        "monthYear": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["monthlyExpenseBudget", "monthlySavingsTarget", "monthYear", "createdAt"]
+    },
+    "GoalItem": {
+      "title": "GoalItem",
+      "description": "Personal, financial, study, or career goal with milestones",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "targetAmount": { "type": "number" },
+        "currentAmount": { "type": "number" },
+        "targetDate": { "type": "string" },
+        "isCompleted": { "type": "boolean" },
+        "progressPercent": { "type": "integer" },
+        "milestones": { "type": "array" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "isCompleted", "createdAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Conversation message with the BabelOS AI Assistant",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["role", "content", "timestamp", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "TaskItem",
+      "description": "User daily planner tasks"
+    },
+    "/users/{userId}/subjects/{subjectId}": {
+      "schema": "StudySubject",
+      "description": "User study subjects"
+    },
+    "/users/{userId}/topics/{topicId}": {
+      "schema": "StudyTopic",
+      "description": "User study topics"
+    },
+    "/users/{userId}/study_sessions/{sessionId}": {
+      "schema": "StudySession",
+      "description": "User recorded study sessions"
+    },
+    "/users/{userId}/accounts/{accountId}": {
+      "schema": "FinancialAccount",
+      "description": "User financial accounts"
+    },
+    "/users/{userId}/transactions/{transactionId}": {
+      "schema": "FinancialTransaction",
+      "description": "User financial transactions"
+    },
+    "/users/{userId}/budgets/{budgetId}": {
+      "schema": "FinancialBudget",
+      "description": "User monthly budgets"
+    },
+    "/users/{userId}/goals/{goalId}": {
+      "schema": "GoalItem",
+      "description": "User goals and milestones"
+    },
+    "/users/{userId}/chat_messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "User AI assistant chat history"
+    }
+  }
+}
